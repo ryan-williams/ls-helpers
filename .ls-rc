@@ -19,7 +19,6 @@ defn tflu tail-f-last-updated
 defn psl parse-symlinks
 defn lls ls-links
 
-
 defn l smart-ls
 
 defn la l -a
@@ -73,6 +72,10 @@ defn l20 lt 20
 defn l30 lt 30
 defn l40 lt 40
 defn l50 lt 50
+defn l60 lt 60
+defn l70 lt 70
+defn l80 lt 80
+defn l90 lt 90
 defn l100 lt 100
 
 defn trl tree -L
