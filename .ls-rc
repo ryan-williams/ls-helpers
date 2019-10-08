@@ -90,6 +90,8 @@ defn tp3 tree -L 3 -pugsh --filelimit 50
 defn tp4 tree -L 4 -pugsh --filelimit 50
 defn tp5 tree -L 5 -pugsh --filelimit 50
 defn tpr tree -R -pugsh --filelimit 50
+defn trs tree -Rs
+defn trsh tree -Rsh
 
 defn lsgl ls-grep-link-dest
 
