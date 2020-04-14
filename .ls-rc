@@ -12,6 +12,9 @@ defn lrul last-updated-less
 defn cdlu . cd-last-updated
 defn cdl . cd-last-updated
 
+defn cdll . cd-last-updated-2
+defn cdl2 . cd-last-updated-2
+
 defn tlu tail-f-last-updated
 defn tflu tail-f-last-updated
 
