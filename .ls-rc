@@ -87,6 +87,31 @@ defn tr3 tree -L 3
 defn tr4 tree -L 4
 defn tr5 tree -L 5
 
+defn td tree -d
+defn t1d tree -L 1 -d
+defn t2d tree -L 2 -d
+defn t3d tree -L 3 -d
+defn t4d tree -L 4 -d
+defn t5d tree -L 5 -d
+
+defn td1 tree -L 1 -d
+defn td2 tree -L 2 -d
+defn td3 tree -L 3 -d
+defn td4 tree -L 4 -d
+defn td5 tree -L 5 -d
+
+defn tr1d tree -L 1 -d
+defn tr2d tree -L 2 -d
+defn tr3d tree -L 3 -d
+defn tr4d tree -L 4 -d
+defn tr5d tree -L 5 -d
+
+defn trd1 tree -L 1 -d
+defn trd2 tree -L 2 -d
+defn trd3 tree -L 3 -d
+defn trd4 tree -L 4 -d
+defn trd5 tree -L 5 -d
+
 defn tp1 tree -L 1 -pugsh --filelimit 50
 defn tp2 tree -L 2 -pugsh --filelimit 50
 defn tp3 tree -L 3 -pugsh --filelimit 50
