@@ -126,3 +126,5 @@ defn lsgl ls-grep-link-dest
 defn dtr dir-tree
 defn drt dir-tree
 
+#defn times stat -c '%w %x %y %z'
+alias times="stat -c '%n %w %x %y %z'"
