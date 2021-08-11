@@ -11,6 +11,13 @@ defn lrul last-updated-less
 
 defn cdlu . cd-last-updated
 defn cdl . cd-last-updated
+up_and_cd_last_updated() {
+  cd ..
+  . cd-last-updated
+}
+export -f up_and_cd_last_updated
+defn ucdl up_and_cd_last_updated
+defn ucl up_and_cd_last_updated
 
 defn cdll . cd-last-updated-2
 defn cdl2 . cd-last-updated-2
