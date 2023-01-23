@@ -54,7 +54,7 @@ defn lr l -R
 if alias ll &> /dev/null; then
   unalias ll
 fi
-defn ll ls -lhA --color=auto
+defn ll ls -lA --color=auto
 defn lld l -d
 
 defn lltt ls-l-tail
