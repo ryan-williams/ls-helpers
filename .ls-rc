@@ -92,6 +92,7 @@ defn tras tree -as
 defn trash tree -ash
 defn trs tree -as
 defn trsh tree -ash
+defn tsh tree -ash
 
 defn trl tree -L
 defn tr1 tree -L 1
