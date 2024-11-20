@@ -2,4 +2,4 @@
 
 dir="$(last-updated-dir "$@")"
 echo "$dir"
-cd "$dir"
+pushd "$dir"
