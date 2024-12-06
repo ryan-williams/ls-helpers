@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+set -eo pipefail
+
 if [[ "$1" =~ ^[0-9]+$ ]]; then
   num="$1"
   shift
 fi
 cd "$1"
 shift
-tail -n "${num:-10}" -f "$(last-updated)"
+tail -n "${num:-10}" -f "$(last_updated_file)"

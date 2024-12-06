@@ -2,25 +2,104 @@
 
 export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90:ow=37;41'
 
-defn lu last-updated
-defn lru last-updated
-defn lud last-updated-dir
+_last_updated() {
+  # Usage: _last_updated [find_args...] [-- [parent_dir=. [more_find_args...]]]
+  local pre=()
+  local sep=
+  local post=()
+  for arg in "$@"; do
+    if [ "$arg" == -- ]; then
+      sep=1
+    elif [ -z "$sep" ]; then
+      pre+=("$arg")
+    else
+      post+=("$arg")
+    fi
+  done
+  set -- "${post[@]}"
+  local dir
+  if [ $# -gt 0 ]; then
+    dir="$1"; shift
+  else
+    dir=.
+  fi
+  # echo "Usage: ${FUNCNAME[0]} [find_args...] [-- <parent_dir>]" >&2
+  find "$dir" "${pre[@]}" "$@" -printf '%T@ %p\n' 2>/dev/null | \
+  sort -nr | \
+  head -n1 | \
+  cut -d' ' -f2- | \
+  sed 's_^./__'
+}
+export -f _last_updated
 
-defn lul last-updated-less
-defn lrul last-updated-less
+defn last_updated _last_updated -type f -maxdepth 1 -not -name '".*"' --
+defn last_updated_file last_updated
+defn lu last_updated
+defn lru last_updated
+defn lruf last_updated
+defn luf last_updated
 
-defn cdlu . cd-last-updated
-defn cdl . cd-last-updated
+defn last_updated_all _last_updated -type f -maxdepth 1 --
+defn last_updated_file_all last_updated_all
+defn lfa last_updated_all
+defn lua last_updated_all
+defn lrua last_updated_all
+defn lrufa last_updated_all
+defn lufa last_updated_all
+
+defn last_updated_dir _last_updated -type d -mindepth 1 -maxdepth 1 -not -name '".*"' --
+defn lud last_updated_dir
+defn lrud last_updated_dir
+
+defn last_updated_dir_all _last_updated -type d -mindepth 1 -maxdepth 1 --
+defn lda last_updated_dir_all
+defn luda last_updated_dir_all
+defn lruda last_updated_dir_all
+
+defn last_updated_file_recursive _last_updated -type f -not -name '".*"' --
+defn lfr last_updated_file_recursive
+defn lufr last_updated_file_recursive
+defn lur last_updated_file_recursive
+
+defn last_updated_file_recursive_all _last_updated -type f --
+defn lfra last_updated_file_recursive_all
+defn lufra last_updated_file_recursive_all
+defn lura last_updated_file_recursive_all
+
+defn last_updated_dir_recursive _last_updated -type d -not -name '".*"' --
+defn ludr last_updated_dir_recursive
+defn ldr last_updated_dir_recursive
+
+defn last_updated_dir_recursive_all _last_updated -type d --
+defn ldra last_updated_dir_recursive_all
+defn ludra last_updated_dir_recursive_all
+
+cd_last_updated() {
+  local dir
+  dir="$(last_updated_dir "$@")"
+  echo "$dir" >&2
+  pushd "$dir" || return 1
+}
+export -f cd_last_updated
+defn cdlu cd_last_updated
+defn cdl cd_last_updated
+
+cd_last_updated_2() {
+  cd_last_updated
+  cd_last_updated
+}
+export -f cd_last_updated_2
+defn cdl2 cd_last_updated_2
+defn cdll cd_last_updated_2
+defn cdl2 cd_last_updated_2
+
 up_and_cd_last_updated() {
   cd ..
-  . cd-last-updated
+  cd_last_updated
 }
 export -f up_and_cd_last_updated
 defn ucdl up_and_cd_last_updated
 defn ucl up_and_cd_last_updated
-
-defn cdll . cd-last-updated-2
-defn cdl2 . cd-last-updated-2
 
 defn tlu tail-f-last-updated
 defn tflu tail-f-last-updated

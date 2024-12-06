@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-. cd-last-updated
-empty=()
-set -- "${empty[@]}"
-. cd-last-updated
