@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Shim for backwards compatibility
+last_updated_file "$@"
